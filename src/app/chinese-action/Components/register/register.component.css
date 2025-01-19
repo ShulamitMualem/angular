@@ -1,0 +1,76 @@
+/* עיצוב כללי של הטופס */
+.register-form {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #fafafa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* עיצוב כללי של שדות */
+.form-group {
+    margin-bottom: 20px;
+}
+
+input.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* אפקט focus לשדות */
+input.form-control:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+    outline: none;
+}
+
+/* הודעות שגיאה */
+.error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* עיצוב כפתור "שלח" */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* עיצוב שדה עם שגיאה */
+.has-error {
+    border-color: #f44336 !important;
+}
+
+/* כלל טופס (עיצוב הגלובלי) */
+input.form-control::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+input.form-control:focus::placeholder {
+    color: transparent;
+}

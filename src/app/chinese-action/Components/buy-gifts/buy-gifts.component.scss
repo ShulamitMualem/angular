@@ -1,0 +1,81 @@
+/* Container for the card */
+.gift-card {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border-color: #333;
+    border-style: double;
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gift-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Image container */
+.gift-image-container {
+    max-width: 200px;
+    max-height: 200px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.gift-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Text styles */
+.gift-name {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+}
+
+.category-text {
+    color: #666;
+}
+
+.price {
+    color: #007bff;
+}
+
+/* Price and button container */
+.action-buttons {
+    justify-content: flex-end;
+}
+
+.price-tag {
+    background-color: #f0f0f0;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
+.price-tag .pi-star-fill {
+    color: #ffcc00;
+}
+
+/* Button styles */
+.p-button {
+    padding: 8px 20px;
+    border-radius: 30px;
+}
+
+.p-button.p-button-outlined {
+    border: 2px solid #007bff;
+}
+
+/* Responsive grid layout */
+@media (max-width: 768px) {
+    .gift-card {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gift-image-container {
+        max-width: 150px;
+    }
+}

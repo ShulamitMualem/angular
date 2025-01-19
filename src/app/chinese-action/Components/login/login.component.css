@@ -1,0 +1,69 @@
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* עיצוב שדות טקסט */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* הודעת שגיאה */
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+/* עיצוב כפתור */
+.login-btn {
+    width: 100%;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.login-btn:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* העיצוב הכללי לשדות עם שגיאה */
+.has-error {
+    border-color: red !important;
+}
+
+.has-error:focus {
+    border-color: red !important;
+    outline: none;
+}
