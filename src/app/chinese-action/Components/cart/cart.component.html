@@ -8,11 +8,12 @@
 
             <div class="flex-1 flex flex-column gap-2">
                 <span class="font-bold text-900">
-                    {{+ product.quantity }}
+                 <i class="pi pi-plus" (click)="addQuantity(product)" ></i>  {{ product.quantity }} <i class="pi pi-minus" (click)="subQuantity(product)"></i> 
                 </span>
                 <span class="font-bold">{{ product.gift.name }}</span>
             </div>
             <span class="font-bold text-900">
+                <i class="pi pi-trash" (click)="deleteFromCart(product)" ></i>
                 {{ '$' + product.gift.price * product.quantity }}
             </span>
         </div>

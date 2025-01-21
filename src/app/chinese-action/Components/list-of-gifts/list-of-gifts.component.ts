@@ -108,7 +108,40 @@ getData()  {
     this.giftDialog = false;
     this.submitted = false;
   }
+  selectedImage: string | ArrayBuffer | null = null;
 
+  imagePath: string = '';
+  
+  
+  onFileSelected(event: Event) {
+  
+  const input = event.target as HTMLInputElement;
+  
+  if (input.files && input.files.length > 0) {
+  
+  const file = input.files[0];
+  
+  const reader = new FileReader();
+  
+  
+  reader.onload = (e: any) => {
+  
+  this.selectedImage = e.target.result; // הנתיב לתמונה בכרטיסיית תמונה
+  
+this.gift.imgUrl =e.target.result; // כאן אתה יכול לשמור את שם הקובץ במודל שלך
+  
+  };
+  
+  
+  reader.readAsDataURL(file); // קורא את הקובץ כ-data URL
+  
+  }
+  
+  }
+  
+  
+  
+  
   savegift() {
     this.submitted = true;
     if (this.gift.name?.trim() && this.gift.price && this.gift.price >= 10

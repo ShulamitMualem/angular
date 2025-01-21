@@ -87,7 +87,7 @@
           <td>{{ gift.name }}</td>
           <td>
             <img
-              [src]="'/' + gift.imgUrl"
+              [src]="gift.imgUrl"
               [alt]="gift.name"
               width="50"
               class="shadow-4"
@@ -140,12 +140,13 @@
     >
       <ng-template pTemplate="content">
         <img
-          [src]="'/' + gift.imgUrl"
+          [src]="gift.imgUrl"
           [alt]="gift.imgUrl"
           [alt]="gift.name"
           width="100"
           *ngIf="gift.imgUrl"
         />
+        <div>{{ gift.imgUrl}}</div>
         <div class="field">
           <label for="name">Name</label>
           <input
@@ -214,7 +215,7 @@
             Price is required and should be at least 10.
           </small>
         </div>
-        <div class="field">
+        <!-- <div class="field">
           <label for="ImgeUrl">ImgeUrl</label>
           <input
           type="text"
@@ -227,7 +228,16 @@
           autofocus
           
           />
-        </div>
+        </div> -->
+        <div>
+
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;" #fileInput>
+          
+          <button (click)="fileInput.click()">IMPORT</button>
+          
+         
+          
+          </div>
        
   
       </ng-template>
