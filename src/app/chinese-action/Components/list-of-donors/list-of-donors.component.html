@@ -76,42 +76,6 @@
     </ng-template>
   </p-table>
 
-  <!-- <p-dialog [(visible)]="donorDialog" [style]="{ width: '450px' }" header="donor Details" [modal]="true"
-    styleClass="p-fluid">
-    <ng-template pTemplate="content">
-      <img
-          [src]="'https://primefaces.org/cdn/primeng/images/demo/donor/' + donor.imgUrl"
-          [alt]="donor.imgUrl"
-          class="block m-auto pb-3"
-          *ngIf="donor.imgUrl"
-        />
-      <div class="field">
-        <label for="firstName">firstName</label>
-        <input type="text" pInputText id="firstName" [(ngModel)]="donor.firstName" required autofocus />
-        <small class="p-error" *ngIf="submitted && !donor.firstName">
-          Name is required.
-        </small>
-      </div>
-      <div class="field">
-        <label for="lastName">LastName</label>
-        <input type="text" pInputText id="lastName" [(ngModel)]="donor.lastName" required autofocus />
-        <small class="p-error" *ngIf="submitted && !donor.lastName">
-          Last name is required.
-        </small>
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="email" min="10" cols="20" pInputText id="price" [(ngModel)]="donor.email" required autofocus />
-      </div>
-
-    </ng-template>
-
-    <ng-template pTemplate="footer">
-      <p-button label="Cancel" icon="pi pi-times" [text]="true" (onClick)="hideDialog()" />
-      <p-button label="Save" icon="pi pi-check" [text]="true" (onClick)="savedonor()" />
-    </ng-template>
-  </p-dialog> -->
     <app-donor-form [donor]="donor" [(visible)]="visible" (refreshData)="refreshData($event)"/>
-  <!-- [style]="{width:'450px'}" -->
   <p-confirmDialog [style]="{width:'450px'}" />
 </div>

@@ -1,17 +1,5 @@
-<!-- <form  [formGroup]="frmLogin">
-    <div>
-        <input pInputText placeholder="email" aria-label="email" class="form-control" formControlName="email" 
-        [ngClass]="{'has-error':!frmLogin.controls['email'].valid && frmLogin.controls['email'].touched}"/>
-        <span *ngIf="frmLogin.controls['email'].errors  && frmLogin.controls['email'].touched ">email is require</span>
-    </div>
-    <div class="form-group row">
-        <input pInputText placeholder="password" aria-label="password" class="form-control" formControlName="password" 
-        [ngClass]="{'has-error':!frmLogin.controls['password'].valid && frmLogin.controls['password'].touched}"/>
-        <span *ngIf="frmLogin.controls['password'].errors  && frmLogin.controls['password'].touched ">password is require</span>
-    </div>
-    <button [disabled]="frmLogin.invalid" (click)="login()">send</button>
-</form> -->
 
+<p-dialog [(visible)]="{{globalService.getLoginView()}}"  [style]="{ width: '450px' }" [modal]="true" styleClass="p-fluid" (onHide)="hideDialog()">
 <div class="flex flex-column md:flex-row">
     <div class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5">
         <form [formGroup]="frmLogin" class="login-form">
@@ -46,4 +34,4 @@
     </div>
     
 </div>
-
+</p-dialog>

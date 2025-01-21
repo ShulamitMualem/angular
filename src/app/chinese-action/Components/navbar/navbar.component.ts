@@ -15,120 +15,77 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   items: MenuItem[] | undefined;
-  authService=inject(AuthService)
-  globalSrv=inject(GlobalService)
+  authService = inject(AuthService)
+  globalSrv = inject(GlobalService)
+  visible: boolean = false;
+  constructor(private router: Router) {
 
-  constructor(   private router: Router) {
-      
+  }
+  setVisibleLogin(){
+    this.visible=true
   }
   ngOnInit() {
- this.setItems()
+    this.setItems()
   }
-  setItems(){
-    this.globalSrv.getIsAdmin().subscribe(data=>{this.items = [
-      {
+  setItems() {
+    this.globalSrv.getIsAdmin().subscribe(data => {
+      this.items = [
+        {
           label: 'Home',
           icon: 'pi pi-home',
           routerLink: '',
 
-      },
-      {
-        label: 'Login',
-    routerLink: '/login',
-    icon: 'pi pi-sign-in'
-      },
+        },
+        {
+          label: 'Login',
+          routerLink: '/login',
+          icon: 'pi pi-sign-in'
+        },
 
-      {
+        {
           label: 'Shop Gifts',
           icon: 'pi pi-gift',
           routerLink: 'viewGift',
-      },
+        },
 
-  ];
-  this.authService.hasRole([1])?this.items.push({
-    label: 'Manager',
-    icon: 'pi pi-user-edit',
-    items: [
-        {
+      ];
+      this.authService.hasRole([1]) ? this.items.push({
+        label: 'Manager',
+        icon: 'pi pi-user-edit',
+        items: [
+          {
             label: 'Gifts',
             icon: 'pi pi-gift',
             routerLink: '/admin/gifts'
 
-        },
-        {
+          },
+          {
             label: 'Donors',
             icon: 'pi pi-users',
             routerLink: '/admin/donors',
 
-          
-        },
-        {
+
+          },
+          {
             label: 'Users',
             icon: 'pi pi-user'
 
-        },        {
-          label: 'Raffle',
-          icon: 'pi pi-tags',
-          routerLink: '/admin/raffle',
+          }, {
+            label: 'Raffle',
+            icon: 'pi pi-tags',
+            routerLink: '/admin/raffle',
 
-      }
-  
-    ]
-}):"" })
-    this.items = [
-      {
-          label: 'Home',
-          icon: 'pi pi-home',
-          routerLink: '',
+          }
 
-      },
-      {
-        label: 'Login',
-    routerLink: '/login',
-    icon: 'pi pi-sign-in'
-      },
-
-      {
-          label: 'Shop Gifts',
-          icon: 'pi pi-gift',
-          routerLink: 'viewGift',
-      },
-
-  ];
-  this.authService.hasRole([1])?this.items.push({
-    label: 'Manager',
-    icon: 'pi pi-user-edit',
-    items: [
-        {
-            label: 'Gifts',
-            icon: 'pi pi-gift',
-            routerLink: '/admin/gifts'
-
-        },
-        {
-            label: 'Donors',
-            icon: 'pi pi-users',
-            routerLink: '/admin/donors',
-
-          
-        },
-        {
-            label: 'Users',
-            icon: 'pi pi-user'
-
-        },        {
-          label: 'Raffle',
-          icon: 'pi pi-tags',
-          routerLink: '/admin/raffle',
-
-      }
-  
-    ]
-}):"" 
+        ]
+      }) : ""
+    })
+    
   }
-  navgateToCart(){
+
+  navgateToCart() {
     this.router.navigate(['/cart']);
-}
+  }
 }
