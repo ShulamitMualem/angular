@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Donor } from '../../../Models/donor/donor';
 import { DonorsService } from '../../../services/donor.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-list-of-dodnors',
@@ -28,8 +29,7 @@ export class ListOfDonorsComponent {
   selectedDonors!: Donor[] | null;
 
   submitted: boolean = false;
-
-
+  @ViewChild('dt') dt!: Table;
   constructor(
     private donorService: DonorsService,
     private messageService: MessageService,
@@ -41,7 +41,11 @@ export class ListOfDonorsComponent {
   ngOnInit() {
     this.getData()
   }
-
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const searchValue = input.value;
+    this.dt.filterGlobal(searchValue, 'contains');
+  }
   openNew() {
     this.donor = {
       id: 0,

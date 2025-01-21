@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Gift } from '../../../Models/gift.model';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { GiftsService } from '../../../services/gifts.service';
 import { Observable } from 'rxjs';
 import { DonorsService } from '../../../services/donor.service';
 import { Router } from '@angular/router';
+import { Table } from 'primeng/table';
 @Component({
   selector: 'app-list-of-gifts',
   templateUrl: './list-of-gifts.component.html',
@@ -18,6 +19,8 @@ import { Router } from '@angular/router';
   ],
 })
 export class ListOfGiftsComponent implements OnInit {
+    @ViewChild('dt') dt!: Table;
+  
   giftDialog: boolean = false;
 
   gifts!: Gift[];
@@ -46,7 +49,12 @@ getData()  {
     this.getData()
    this.donorService.getAll().subscribe(data=>this.donors=data);
   }
-
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const searchValue = input.value;
+    debugger
+    this.dt.filterGlobal(searchValue, 'contains');
+  }
   openNew() {
     this.gift = {
       id: 0,

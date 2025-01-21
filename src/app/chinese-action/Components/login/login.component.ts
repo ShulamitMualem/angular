@@ -22,11 +22,11 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required]),
 
 })}
-hideDialog() {
-  // this.visibleChange.emit(false) ;
-  debugger
-  this.globalService.setLoginView(false)
-}
+onDialogHide() {
+  this.frmLogin.reset()
+  this.globalService.setLoginView(false);
+  
+  }
 login() {
   if (this.frmLogin.valid) {
     this.userService.Login(this.frmLogin.value).subscribe({
@@ -45,5 +45,7 @@ login() {
 
   this.router.navigate(['login',{"visible":true}])
 }
-
+getvisible() {
+  this.visible= this.globalService.loginView();
+}
 }

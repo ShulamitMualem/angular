@@ -19,7 +19,7 @@ export class AuthService {
   }
   
   hasRole(requiredRoles: RoleType[]): boolean {
-    this.currentUser=JSON.parse(sessionStorage.getItem("user")||"")
+    this.currentUser=JSON.parse(sessionStorage.getItem("user")||"[]")
     if (!this.currentUser) 
     return false;
   console.log(requiredRoles.includes(this.currentUser.role));

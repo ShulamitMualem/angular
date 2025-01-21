@@ -1,4 +1,6 @@
-<p-dialog [visible]="globalService.getLoginView()"  [style]="{ width: '450px' }"header="Login" [modal]="true" styleClass="p-fluid" (onHide)="hideDialog()">
+<!-- <p-dialog [visible]="globalService.getLoginView()"  [style]="{ width: '450px' }" header="Login"    maskStyleClass="backdrop-blur-sm" (onHide)="globalService.setLoginView(false)"> -->
+<p-dialog id="dialog" header="Login" [(visible)]="visible" [style]="{ width: '40vw' }"  (onHide)="onDialogHide()"  maskStyleClass="backdrop-blur-sm">
+
 <div class="flex flex-column md:flex-row">
     <div class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5">
         <form [formGroup]="frmLogin" class="login-form">

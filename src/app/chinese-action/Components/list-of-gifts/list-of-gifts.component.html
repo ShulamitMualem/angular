@@ -36,7 +36,7 @@
       [value]="gifts"
       [rows]="10"
       [paginator]="true"
-      [globalFilterFields]="['Name', 'country.name', 'representative.name', 'status']"
+      [globalFilterFields]="['name', 'description', 'donorId', 'price']"
       [tableStyle]="{ 'min-width': '75rem' }"
       [(selection)]="selectedGifts"
       [rowHover]="true"
@@ -49,12 +49,8 @@
           <h5 class="m-0">Manage Gifts</h5>
           <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <!-- <input
-              pInputText
-              type="text"
-              (input)="dt.filterGlobal($event.target.value, 'contains')"
-              placeholder="Search..."
-            /> -->
+            <input pInputText type="text" placeholder="Search..."  filterPlaceholder="Filter by name"
+            (input)="onSearch($event)" />
           </span>
         </div>
       </ng-template>
@@ -95,13 +91,7 @@
           </td>
           <td>{{gift.price}}</td>
           <td>{{ gift.description}}</td>
-          <!-- <td>
-            <p-rating
-              [(ngModel)]="gift.rating"
-              [readonly]="true"
-              [cancel]="false"
-            />
-          </td> -->
+         
           <td>
         {{gift.donorId}}
           </td>
