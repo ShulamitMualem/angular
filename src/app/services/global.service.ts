@@ -21,7 +21,10 @@ export class GlobalService {
   }
 
   setLoginView(view: boolean) {
+    debugger
     this.loginView.set(view);
+    console.log("this.getLoginView()");
+    console.log(this.getLoginView());
   }
   getIsAdmin() {
     return this.isAdmin

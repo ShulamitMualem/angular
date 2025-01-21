@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
 
   }
   setVisibleLogin(){
-    this.visible=true
+    this.globalSrv.setLoginView(true)
   }
   ngOnInit() {
     this.setItems()

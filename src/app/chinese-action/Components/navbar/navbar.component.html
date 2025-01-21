@@ -40,4 +40,4 @@
         </div>
     </ng-template>
 </p-menubar>
-<app-login [(visible)]="visible"/>
+<app-login [visible]="globalSrv.getLoginView()"/>

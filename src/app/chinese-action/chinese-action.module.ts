@@ -61,7 +61,6 @@ ReactiveFormsModule,
     
       {path: 'viewGift', component: ViewGiftsComponent },
       {path: 'viewGifts', component:BuyGiftsComponent },
-      {path: 'login', component: LoginComponent },
       {path: 'register', component: RegisterComponent },
       {path: 'cart', component: CartComponent},
       {path: 'payLogin', component: PayLoginComponent},

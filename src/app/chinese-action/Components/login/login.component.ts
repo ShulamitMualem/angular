@@ -23,7 +23,9 @@ export class LoginComponent {
 
 })}
 hideDialog() {
-  this.visibleChange.emit(false) ;
+  // this.visibleChange.emit(false) ;
+  debugger
+  this.globalService.setLoginView(false)
 }
 login() {
   if (this.frmLogin.valid) {
@@ -37,8 +39,10 @@ login() {
         console.error("Login failed:", err);
         this.router.navigate(['register']);
       },
-    });
+    });  
+    this.globalService.setLoginView(false)
   } 
+
   this.router.navigate(['login',{"visible":true}])
 }
 
