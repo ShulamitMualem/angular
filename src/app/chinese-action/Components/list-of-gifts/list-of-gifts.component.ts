@@ -19,7 +19,7 @@ import { Table } from 'primeng/table';
   ],
 })
 export class ListOfGiftsComponent implements OnInit {
-    @ViewChild('dt') dt!: Table;
+ @ViewChild('dt') dt!: Table;
   
   giftDialog: boolean = false;
 

@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
 
   }
   setVisibleLogin(){
+    // this.visible=true
     this.globalSrv.setLoginView(true)
   }
   ngOnInit() {
@@ -40,7 +41,7 @@ export class NavbarComponent implements OnInit {
         },
         {
           label: 'Login',
-          routerLink: '/login',
+          // routerLink: ['/login',{fromWhere:"navbar"}],
           icon: 'pi pi-sign-in'
         },
 

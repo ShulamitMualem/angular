@@ -65,6 +65,7 @@ ReactiveFormsModule,
       {path: 'cart', component: CartComponent},
       {path: 'payLogin', component: PayLoginComponent},
       {path: 'pay', component: PayComponent },
+      // {path: 'login', component: LoginComponent, data:{fromWhere:""} },
       {path:'', component:HomeComponent},
       {path: 'admin' ,canActivate: [roleGuard],
         data: { roles: [RoleType.ADMIN] },children:[

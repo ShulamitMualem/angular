@@ -2,8 +2,9 @@ import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { RoleType, User } from '../../../Models/user/user.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,27 @@ export class LoginComponent {
   frmLogin!: FormGroup;
   userService=inject(UserService) 
   globalService = inject(GlobalService)
-  constructor(private router:Router){
+title!:string
+a!:ActivatedRouteSnapshot
+  private sub!: Subscription;
+
+  constructor(private router:Router,private activatedRoute: ActivatedRoute){
   this.frmLogin = new FormGroup({
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
 
 })}
+ngOnInit() {
+
+console.log( this.activatedRoute.pathFromRoot[0].snapshot.children[0].url[0].path);
+ this.activatedRoute.pathFromRoot[0].snapshot.pathFromRoot 
+    
+
+    
+
+  
+
+}
 onDialogHide() {
   this.frmLogin.reset()
   this.globalService.setLoginView(false);
@@ -43,7 +59,7 @@ login() {
     this.globalService.setLoginView(false)
   } 
 
-  this.router.navigate(['login',{"visible":true}])
+  // this.router.navigate(['login',{"visible":true}])
 }
 getvisible() {
   this.visible= this.globalService.loginView();
