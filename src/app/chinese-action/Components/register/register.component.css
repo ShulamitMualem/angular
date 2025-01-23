@@ -1,76 +1,178 @@
-/* עיצוב כללי של הטופס */
+.register-container {
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    width: 98vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .register-form {
-    max-width: 500px;
-    margin: 50px auto;
-    background-color: #fafafa;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding-left: 7rem;
+    padding-right: 7rem;
+    padding-top: 4rem;
+    height: 70vh;
+    border-radius: 10%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-/* עיצוב כללי של שדות */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
-input.form-control {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* אפקט focus לשדות */
-input.form-control:focus {
-    border-color: #4caf50;
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
-    outline: none;
-}
-
-/* הודעות שגיאה */
-.error-message {
-    color: #f44336;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-/* עיצוב כפתור "שלח" */
 .submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #4caf50;
+    background-color: #4DB6AC;
     color: white;
-    font-size: 16px;
-    font-weight: bold;
+    width: 100%;
+    padding: 0.5rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-    background-color: #45a049;
 }
 
 .submit-btn:disabled {
     background-color: #ccc;
-    cursor: not-allowed;
 }
 
-/* עיצוב שדה עם שגיאה */
-.has-error {
-    border-color: #f44336 !important;
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+}
+/* .custom-float-label {
+    position: relative;
+    margin-bottom: 1.5rem;
 }
 
-/* כלל טופס (עיצוב הגלובלי) */
-input.form-control::placeholder {
-    color: #888;
-    font-style: italic;
+.custom-float-label input {
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s;
 }
 
-input.form-control:focus::placeholder {
-    color: transparent;
+.custom-float-label label {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    color: #999;
+    transition: 0.2s ease all;
+    pointer-events: none;
 }
+
+.custom-float-label input:focus {
+    border-color: #4DB6AC;
+}
+
+.custom-float-label input:focus + label,
+.custom-float-label input:not(:placeholder-shown) + label {
+    top: -0.5rem;
+    left: 0.5rem;
+    font-size: 0.75rem;
+    color: #4DB6AC;
+} */
+/* מכולה של ה-Input וה-Label */
+.floating-label-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  /* עיצוב בסיסי לשדה הקלט */
+  .floating-label-container input {
+    width: 100%;
+    padding: 12px 5px 12px 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    background-color: transparent;
+  }
+  
+  /* עיצוב כשיש פוקוס */
+  .floating-label-container input:focus {
+    border-color: #4DB6AC; /* צבע כחול למסגרת */
+    box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
+  }
+  
+  /* ה-Label (תווית) */
+  .floating-label-container label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #999;
+    transition: 0.2s ease all; /* מעבר חלק */
+    pointer-events: none; /* כדי למנוע לחיצה על הלייבל */
+  }
+  
+  /* כשיש פוקוס או טקסט בשדה */
+  .floating-label-container input:focus + label,
+  .floating-label-container input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 5px;
+    font-size: 12px;
+    color: #4DB6AC; /* צבע כחול */
+  }
+  
+  /* מחיקת ה-placeholder */
+  .floating-label-container input::placeholder {
+    color: transparent; /* כדי שלא יראה placeholder */
+  }
+/* מכולה */
+.floating-label-on {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* קלט */
+  .floating-label-on input {
+    width: 100%;
+    padding: 12px 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    background-color: transparent;
+    transition: border-color 0.3s, box-shadow 0.3s, padding-top 0.3s;
+  }
+  
+  /* פוקוס על הקלט */
+  .floating-label-on input:focus {
+    border-color: #4DB6AC; /* צבע כחול */
+    box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
+  }
+  
+  /* תווית */
+  .floating-label-on label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
+    background: white; /* כדי שהתווית לא תתמזג עם המסגרת */
+    padding: 0 4px;
+    pointer-events: none;
+    transition: 0.3s ease all;
+  }
+  
+  /* תווית במצב פוקוס או כשיש ערך */
+  .floating-label-on input:focus + label,
+  .floating-label-on input:not(:placeholder-shown) + label {
+    top: -4px; /* התווית עולה למעלה */
+    font-size: 12px; /* התווית קטנה יותר */
+    color: #4DB6AC; /* צבע כחול */
+  }
+  
+  /* אנימציה לפתיחת המסגרת */
+  .floating-label-on input:focus {
+    padding-top: 18px; /* מרווח לתווית */
+  }
+  
+  

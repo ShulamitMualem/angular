@@ -25,35 +25,140 @@
         </div>
         <button [disabled]="frmRegister.invalid" (click)="createUser()">send</button>
     </form> -->
-    <form [formGroup]="frmRegister" class="register-form">
+    <div
+    class="register-container"
+    style="background-image: url('http://127.0.0.1:8200/3.jpg');"
+  >
+    <div class="register-form">
+      <h1>Register</h1>
+      <form [formGroup]="frmRegister" (ngSubmit)="createUser()">
         <div class="form-group">
-            <input pInputText placeholder="First Name" aria-label="First Name" formControlName="firstName" 
-            [ngClass]="{'has-error':!frmRegister.controls['firstName'].valid && frmRegister.controls['firstName'].touched}" />
-            <span *ngIf="frmRegister.controls['firstName'].errors && frmRegister.controls['firstName'].touched" class="error-message">First name is required</span>
+          <div class="floating-label-on">
+            <input
+              id="firstName"
+              type="text"
+              placeholder=" "
+              formControlName="firstName"
+            />
+            <label for="firstName">First Name</label>
+            <div
+              *ngIf="
+                frmRegister.controls['firstName']?.invalid &&
+                frmRegister.controls['firstName']?.touched
+              "
+              class="error-message"
+            >
+              First name is required.
+            </div>
+          </div>
         </div>
-    
+  
         <div class="form-group">
-            <input pInputText placeholder="Last Name" aria-label="Last Name" formControlName="lastName" 
-            [ngClass]="{'has-error':!frmRegister.controls['lastName'].valid && frmRegister.controls['lastName'].touched}" />
+          <div class="floating-label-on">
+            <input
+              id="lastName"
+              type="text"
+              placeholder=" "
+              formControlName="lastName"
+            />
+            <label for="lastName">Last Name</label>
+            <div
+              *ngIf="
+                frmRegister.controls['lastName']?.invalid &&
+                frmRegister.controls['lastName']?.touched
+              "
+              class="error-message"
+            >
+              Last name is required.
+            </div>
+          </div>
         </div>
-    
+  
         <div class="form-group">
-            <input pInputText placeholder="Email" aria-label="Email" formControlName="email" 
-            [ngClass]="{'has-error':!frmRegister.controls['email'].valid && frmRegister.controls['email'].touched}" />
-            <span *ngIf="frmRegister.controls['email'].errors && frmRegister.controls['email'].touched" class="error-message">Email is required</span>
+          <div class="floating-label-on">
+            <input
+              id="email"
+              type="email"
+              placeholder=" "
+              formControlName="email"
+            />
+            <label for="email">Email</label>
+            <div
+              *ngIf="
+                frmRegister.controls['email']?.invalid &&
+                frmRegister.controls['email']?.touched
+              "
+              class="error-message"
+            >
+              <span *ngIf="frmRegister.controls['email']?.errors?.['required']"
+                >Email is required.</span
+              >
+              <span *ngIf="frmRegister.controls['email']?.errors?.['email']"
+                >Please enter a valid email.</span
+              >
+            </div>
+          </div>
         </div>
-    
+  
         <div class="form-group">
-            <input pInputText placeholder="Password" aria-label="Password" formControlName="password" 
-            [ngClass]="{'has-error':!frmRegister.controls['password'].valid && frmRegister.controls['password'].touched}" />
-            <span *ngIf="frmRegister.controls['password'].errors && frmRegister.controls['password'].touched" class="error-message">Password is required</span>
+          <div class="floating-label-on">
+            <input
+              id="password"
+              type="password"
+              placeholder=" "
+              formControlName="password"
+            />
+            <label for="password">Password</label>
+            <div
+              *ngIf="
+                frmRegister.controls['password']?.invalid &&
+                frmRegister.controls['password']?.touched
+              "
+              class="error-message"
+            >
+              <span *ngIf="frmRegister.controls['password']?.errors?.['required']"
+                >Password is required.</span
+              >
+            </div>
+          </div>
         </div>
-    
+  
         <div class="form-group">
-            <input pInputText placeholder="Phone" aria-label="Phone" formControlName="phone" 
-            [ngClass]="{'has-error':!frmRegister.controls['phone'].valid && frmRegister.controls['phone'].touched}" />
-            <span *ngIf="frmRegister.controls['phone'].errors && frmRegister.controls['phone'].touched" class="error-message">Phone is required</span>
+          <div class="floating-label-on">
+            <input
+              id="phone"
+              type="text"
+              placeholder=" "
+              formControlName="phone"
+            />
+            <label for="phone">Phone</label>
+            <div
+              *ngIf="
+                frmRegister.controls['phone']?.invalid &&
+                frmRegister.controls['phone']?.touched
+              "
+              class="error-message"
+            >
+              <span *ngIf="frmRegister.controls['phone']?.errors?.['required'] "
+                >Phone is required.</span
+              >
+              <span *ngIf="frmRegister.controls['phone']?.errors?.['pattern']"
+                >Phone must be a valid number.</span
+              >
+            </div>
+          </div>
         </div>
-    
-        <button [disabled]="frmRegister.invalid" (click)="createUser()" class="submit-btn">Send</button>
-    </form>
+  
+        <button
+          [disabled]="frmRegister.invalid"
+          class="submit-btn"
+        >
+          Register
+        </button>
+        <p>
+          Already have an account? <a onclick="">Login</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  
