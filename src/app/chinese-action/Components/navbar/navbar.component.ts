@@ -24,11 +24,20 @@ export class NavbarComponent implements OnInit {
 
   }
   setVisibleLogin(){
-    // this.visible=true
     this.globalSrv.setLoginView(true)
   }
   ngOnInit() {
     this.setItems()
+    this.calculateQuantityOfCart()
+  }
+  private calculateQuantityOfCart(): void {
+    const arrayString = sessionStorage.getItem('cart');
+    if (arrayString) {
+      const array = JSON.parse(arrayString);
+      this.globalSrv.setCartQuantity(array.reduce((accumulator:number, currentValue:any) => accumulator + currentValue.quantity, 0));
+    } else {
+      this.globalSrv.setCartQuantity(0); 
+    }
   }
   setItems() {
     this.globalSrv.getIsAdmin().subscribe(data => {
@@ -41,7 +50,6 @@ export class NavbarComponent implements OnInit {
         },
         {
           label: 'Login',
-          // routerLink: ['/login',{fromWhere:"navbar"}],
           icon: 'pi pi-sign-in'
         },
 

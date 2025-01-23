@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, OnInit, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -6,10 +6,32 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class GlobalService {
 
-  constructor() { }
-  cartQuantity = signal(0);
+
+  quantity:number=0
+  cartQuantity = signal(this.quantity);
   loginView = signal(false);
+  a:string[]=[]
   isAdmin: BehaviorSubject<boolean> = new BehaviorSubject(false)
+  // ngOnInit(){
+  //   this.setCartQuantity(JSON.parse(sessionStorage.getItem("cart")||"[]").forEach((element:any) => {
+  //     this.quantity+= element.quantity
+  //     }))
+  //     console.log(this.quantity);
+      
+  // }
+ngOnChanges() {
+    this.calculateSum();
+  }
+
+  private calculateSum(): void {
+    const arrayString = sessionStorage.getItem('cart');
+    if (arrayString) {
+      const array = JSON.parse(arrayString);
+      this.setCartQuantity(array.reduce((accumulator:number, currentValue:any) => accumulator + currentValue.quantity, 0));
+    } else {
+      this.setCartQuantity(0); // אם אין מערך, הסכום יהיה 0
+    }
+  }
   getCartQuantity() {
     return this.cartQuantity()
   }
