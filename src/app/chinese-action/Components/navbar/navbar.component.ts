@@ -23,6 +23,9 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router) {
 
   }
+  openCart() {
+    this.globalSrv.toggleCartVisibility(true);
+  }
   setVisibleLogin(){
     this.globalSrv.setLoginView(true)
   }

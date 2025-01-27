@@ -12,11 +12,11 @@ export class RegisterComponent {
   userService=inject(UserService)
   constructor(){
   this.frmRegister = new FormGroup({
-        firstName: new FormControl('', [Validators.required]),
-        lastName: new FormControl('', [Validators.required]),
-        email: new FormControl('', [Validators.required,Validators.email]),
-        password: new FormControl('', [Validators.required]),
-        phone: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)])
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required,Validators.email]),
+    password: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)])
 })
 
 }

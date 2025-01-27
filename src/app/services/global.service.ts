@@ -12,15 +12,24 @@ export class GlobalService {
   loginView = signal(false);
   a:string[]=[]
   isAdmin: BehaviorSubject<boolean> = new BehaviorSubject(false)
-  // ngOnInit(){
-  //   this.setCartQuantity(JSON.parse(sessionStorage.getItem("cart")||"[]").forEach((element:any) => {
-  //     this.quantity+= element.quantity
-  //     }))
-  //     console.log(this.quantity);
-      
+  cartVisibleSubject = new BehaviorSubject<boolean>(false);
+  cartVisible$ = this.cartVisibleSubject.asObservable();
+  toggleCartVisibility(isVisible: boolean) {
+    this.cartVisibleSubject.next(isVisible);
+    console.log("this.cartVisibleSubject")
+    // console.log(this.getCartVisibility().value);
+  this.cartVisible$.subscribe(dadat=>console.log(dadat))
+    
+    
+    
+  }
+  // getCartVisibility() {
+  //   return this.cartVisibleSubject;
   // }
+
 ngOnChanges() {
     this.calculateSum();
+
   }
 
   private calculateSum(): void {
@@ -29,7 +38,7 @@ ngOnChanges() {
       const array = JSON.parse(arrayString);
       this.setCartQuantity(array.reduce((accumulator:number, currentValue:any) => accumulator + currentValue.quantity, 0));
     } else {
-      this.setCartQuantity(0); // אם אין מערך, הסכום יהיה 0
+      this.setCartQuantity(0); 
     }
   }
   getCartQuantity() {

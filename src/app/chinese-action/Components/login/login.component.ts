@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
-import { RoleType, User } from '../../../Models/user/user.model';
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
+import { RoleType } from '../../../Models/user/user.model';
+import {  ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
-import { filter, Subscription } from 'rxjs';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +13,15 @@ import { filter, Subscription } from 'rxjs';
 })
 export class LoginComponent {
   @Input() visible!: boolean;
-  @Output() visibleChange:EventEmitter<boolean>=new EventEmitter(false);
   frmLogin!: FormGroup;
   userService=inject(UserService) 
   globalService = inject(GlobalService)
 title!:string
 source!: string;
 a!:ActivatedRouteSnapshot
-  private sub!: Subscription;
 
-  constructor(private router:Router,private activatedRoute: ActivatedRoute){
+
+  constructor(private router:Router){
   this.frmLogin = new FormGroup({
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
@@ -42,7 +41,6 @@ ngOnChanges(){
 onDialogHide() {
   this.frmLogin.reset()
   this.globalService.setLoginView(false);
-  
   }
 login() {
   if (this.frmLogin.valid) {
