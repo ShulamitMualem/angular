@@ -1,95 +1,85 @@
-/* עיצוב רקע כללי של p-dataview */
 ::ng-deep .p-dataview {
-    background-image: url(../../../../assets/Designer.jpeg); /* נתיב לתמונה */
+    background-image: url(../../../../../public/עיצוב\ 4.png); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 1rem; /* רווחים פנימיים */
+    padding: 1rem;
   }
   
-  /* כרטיסי מצב רשימה */
   ::ng-deep .p-dataview-list-container .p-dataview-list-item {
-    background: #ffffff; /* רקע לבן */
-    border: 1px solid #e0e0e0; /* מסגרת עדינה */
-    border-radius: 12px; /* פינות מעוגלות */
-    padding: 1.5rem; /* ריווח פנימי */
-    margin: 1rem 0; /* רווח אנכי בין הכרטיסים */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צל עדין */
+    background: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 12px; 
+    padding: 1.5rem; 
+    margin: 1rem 0; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   
-  /* תמונה בתוך כרטיס במצב רשימה */
+
   ::ng-deep .p-dataview-list-container .p-dataview-list-item img {
     margin-top: 1rem;
-    width: 100px; /* גודל התמונה */
+    width: 100px; 
     height: auto;
-    border-radius: 8px; /* פינות מעוגלות */
-    align-self: center; /* מרכז התמונה */
+    border-radius: 8px; 
+    align-self: center; 
   }
   
-  /* כרטיסי מצב גריד */
   ::ng-deep .p-dataview-grid .p-dataview-grid-item {
-    background: #ffffff; /* רקע לבן */
-    border: 1px solid #e0e0e0; /* מסגרת עדינה */
-    border-radius: 8px; /* פינות מעוגלות */
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px; 
     padding: 1rem;
-    margin: 1rem; /* רווח מסביב לכרטיס */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צל עדין */
+    margin: 1rem; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
   
-  /* הגדרת רווח בין הכרטיסים */
   ::ng-deep .p-dataview .p-dataview-item {
-    margin-bottom: 1rem; /* רווח אנכי */
+    margin-bottom: 1rem; 
   }
   
-  /* שקיפות באזורים שבין הכרטיסים */
   ::ng-deep .p-dataview .p-dataview-content {
-    background: transparent !important; /* שקוף */
+    background: transparent !important; 
   }
   
 
-/* כרטיסי מצב רשימה */
 ::ng-deep .p-dataview-list-container .p-dataview-list-item {
-    background: #ffffff; /* רקע לבן */
-    border: 1px solid #e0e0e0; /* מסגרת עדינה */
-    border-radius: 12px; /* פינות מעוגלות */
-    padding: 1.5rem; /* ריווח פנימי */
-    margin: 1rem 0; /* רווח אנכי בין הכרטיסים */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צל עדין */
+    background: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    position: relative; /* עבור מיקום התמונה */
+    position: relative; 
 }
 
-/* התמונה בכרטיסי רשימה */
 ::ng-deep .p-dataview-list-container .p-dataview-list-item img {
-    position: absolute; /* מיקום מוחלט */
-    bottom: 1rem; /* מיושרת לתחתית */
-    left: 50%; /* מרכזית */
-    transform: translateX(-50%); /* יישור מרכז */
-    width: 120px; /* רוחב התמונה */
-    height: auto; /* גובה יחסי */
-    border-radius: 8px; /* פינות מעוגלות */
-    z-index: -1; /* מאחורי הטקסט */
-    opacity: 0.9; /* שקיפות קלה */
+    position: absolute; 
+    bottom: 1rem; 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 120px; 
+    height: auto; 
+    border-radius: 8px;
+    z-index: -1; 
+    opacity: 0.9; 
 }
 
-/* כפתורי עיצוב Layout */
 ::ng-deep .p-dataview .p-dataview-layout-options {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
 }
 
-/* התאמה כללית */
 .custom-dataview-container {
     padding: 2rem;
 }
 
-/* רווח בין הכרטיסים */
 ::ng-deep .p-dataview-item {
-    margin-bottom: 1rem; /* ריווח בין פריטים */
+    margin-bottom: 1rem;
 }
  

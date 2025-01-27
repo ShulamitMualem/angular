@@ -14,25 +14,19 @@ export class GlobalService {
   isAdmin: BehaviorSubject<boolean> = new BehaviorSubject(false)
   cartVisibleSubject = new BehaviorSubject<boolean>(false);
   cartVisible$ = this.cartVisibleSubject.asObservable();
+  IsRaffleAlowed=signal(true)
+
   toggleCartVisibility(isVisible: boolean) {
-    this.cartVisibleSubject.next(isVisible);
-    console.log("this.cartVisibleSubject")
-    // console.log(this.getCartVisibility().value);
-  this.cartVisible$.subscribe(dadat=>console.log(dadat))
-    
-    
-    
+    this.cartVisibleSubject.next(isVisible); 
   }
-  // getCartVisibility() {
-  //   return this.cartVisibleSubject;
-  // }
+
 
 ngOnChanges() {
     this.calculateSum();
-
   }
 
   private calculateSum(): void {
+    debugger
     const arrayString = sessionStorage.getItem('cart');
     if (arrayString) {
       const array = JSON.parse(arrayString);
@@ -64,4 +58,11 @@ ngOnChanges() {
   setIsAdmin(chageRole: boolean) {
     this.isAdmin.next(chageRole);
   }
+  getIsRaffleAlowed(){
+    return this.IsRaffleAlowed()
+  }
+  
+  setIsRaffleAlowed(view: boolean){
+      this.IsRaffleAlowed.set(view);
+    }
 }

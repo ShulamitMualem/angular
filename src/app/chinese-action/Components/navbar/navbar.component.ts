@@ -1,12 +1,6 @@
 
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { MenubarModule } from 'primeng/menubar';
-import { BadgeModule } from 'primeng/badge';
-import { AvatarModule } from 'primeng/avatar';
-import { InputTextModule } from 'primeng/inputtext';
-import { CommonModule } from '@angular/common';
-import { RippleModule } from 'primeng/ripple';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
 import { AuthService } from '../../../services/auth.service';
@@ -20,6 +14,12 @@ export class NavbarComponent implements OnInit {
   authService = inject(AuthService)
   globalSrv = inject(GlobalService)
   visible: boolean = false;
+  backGroundColor:string='#dee9fc'
+  firstLetter:string="A"
+
+  firstLetterChange(first:string){
+    this.firstLetter=first
+  }
   constructor(private router: Router) {
 
   }

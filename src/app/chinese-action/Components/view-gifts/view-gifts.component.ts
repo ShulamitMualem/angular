@@ -8,9 +8,11 @@ import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
 import { ButtonModule } from 'primeng/button';
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
+import { RaffleComponent } from '../raffle/raffle.component';
+import { RaffleService } from '../../../services/raffle.service';
 
 @Component({
   selector: 'app-view-gifts',
@@ -24,10 +26,14 @@ export class ViewGiftsComponent {
   gifts!: Gift[];
   cart: any
   globalSrv = inject(GlobalService)
+  raffleService=inject(RaffleService)
   constructor(private giftService: GiftsService, private router: Router) {
 
   }
-
+  UpdatePermition(){
+    this.raffleService.getDateOfRaffle().subscribe(date=>{
+      this.globalSrv.setIsRaffleAlowed(formatDate(date,"YYYY-MM-DD hh:mm:ss",'en_US')<formatDate(new Date(), "YYYY-MM-DD hh:mm:ss",'en_US')?false:true)
+})}
   ngOnInit() {
     this.giftService.getAll().subscribe(data => {
       this.gifts = data.slice(0, 12)
@@ -41,6 +47,8 @@ export class ViewGiftsComponent {
     currentItem ? currentItem.quantity += 1 : this.cart.push({ "gift": gift, "quantity": 1 })
     sessionStorage.setItem("cart", JSON.stringify(this.cart))
     this.globalSrv.setCartQuantity(1);
+    console.log(this.cart);
+    
   }
   goToCart() {
     this.router.navigate(['/cart']);

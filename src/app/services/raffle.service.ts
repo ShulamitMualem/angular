@@ -34,5 +34,12 @@ export class RaffleService {
     
           return (this.http.post<LotteryTicket[]>(this.apiUrl,lotteryTickets ))
  } 
+ getDateOfRaffle(): Observable<Date> {
+  return this.http.get<Date>(`${this.apiUrl}/DateOfraffle`);
+}
+
+setDateOfRaffle(dateToset:Date): Observable<Date> {
+  return this.http.post<Date>(`${this.apiUrl}/DateOfraffle`,dateToset);
+}
     
 }

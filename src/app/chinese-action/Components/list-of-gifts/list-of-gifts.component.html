@@ -27,14 +27,14 @@
           chooseLabel="Import"
           class="mr-2 inline-block"
         />
-        <p-button severity="help" label="Export" icon="pi pi-upload" />
+        <p-button severity="help" label="Export" icon="pi pi-upload" (click)="exportToExcel()"/>
       </ng-template>
     </p-toolbar>
   
     <p-table
       #dt
       [value]="gifts"
-      [rows]="10"
+      [rows]="8"
       [paginator]="true"
       [globalFilterFields]="['name', 'description', 'donorId', 'price']"
       [tableStyle]="{ 'min-width': '75rem' }"
@@ -205,20 +205,7 @@
             Price is required and should be at least 10.
           </small>
         </div>
-        <!-- <div class="field">
-          <label for="ImgeUrl">ImgeUrl</label>
-          <input
-          type="text"
-          min="10"
-          cols="20"
-          pInputText
-          id="ImgeUrl"
-          [(ngModel)]="gift.imgUrl"
-          required
-          autofocus
-          
-          />
-        </div> -->
+
         <div>
 
           <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;" #fileInput>
@@ -250,6 +237,6 @@
   
     <p-confirmDialog [style]="{width:'450px'}" />
   </div>
-  <button (click)="todonors()">Go to Donors</button>
+ 
   
  

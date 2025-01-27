@@ -13,7 +13,8 @@ export class PayComponent {
   constructor() {
     this.paymentForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      cardNumber:new FormControl( '', [Validators.required, Validators.pattern(/^\d{16}$/)]),
+      cardNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}-?\d{4}-?\d{4}-?\d{4}$/)]),  
+      idNumber: new FormControl('', [Validators.required, Validators.pattern(/^\d{9}$/)]),
       expiryDate:new FormControl( '', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)]),
       cvv: new FormControl('', [Validators.required, Validators.pattern(/^\d{3}$/)])
     });
@@ -23,7 +24,7 @@ export class PayComponent {
     if (this.paymentForm.valid) {
       console.log('Payment Details:', this?.paymentForm.value);
       alert('Payment Successful!');
-      this.raffleService.creatLotteryTickets(JSON.parse(sessionStorage.getItem("user")||"-1").id,JSON.parse(sessionStorage.getItem("cart")||"[]")).subscribe((data)=>{
+      this.raffleService.creatLotteryTickets(JSON.parse(sessionStorage.getItem("user")||"-1"),JSON.parse(sessionStorage.getItem("cart")||"[]")).subscribe((data)=>{
         console.log(data);
         }) 
     } else {
@@ -35,5 +36,21 @@ raffle(){
   console.log(data);
 
   }) 
+}
+formatCardNumber(event: any): void {
+  let input = event.target.value.replace(/\D/g, ''); // הסרת תווים לא מספריים
+  if (input.length > 16) {
+    input = input.slice(0, 16); // הגבלת אורך ל-16 ספרות
+  }
+  const formatted = input.replace(/(\d{4})(?=\d)/g, '$1-'); // הוספת מקפים אחרי כל 4 ספרות
+  event.target.value = formatted;
+}
+
+formatIDNumber(event: any): void {
+  let input = event.target.value.replace(/\D/g, ''); // הסרת תווים לא מספריים
+  if (input.length > 9) {
+    input = input.slice(0, 9); // הגבלת אורך ל-9 ספרות
+  }
+  event.target.value = input; // מציג את המספר עם עד 9 ספרות
 }
 }

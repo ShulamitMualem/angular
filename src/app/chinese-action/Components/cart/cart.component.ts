@@ -29,6 +29,7 @@ export class CartComponent {
   payment() {
     const user = JSON.parse(sessionStorage.getItem('user') || 'null');
     user ? this.router.navigate(['/pay']) : this.globalSrv.setLoginView(true);
+    this.onDialogHide()
   }
 
   getCartFromSession(): any {

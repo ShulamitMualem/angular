@@ -27,12 +27,12 @@
         <div class="flex align-items-center gap-3">
             <!-- <div>{{globalSrv.getIsAdmin() | async}}</div> -->
             <i class="pi pi-cart-plus text-3xl" pBadge value={{globalSrv.getCartQuantity()}} (click)="openCart()"></i>
-            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+            <p-avatar label="{{firstLetter}}" shape="circle" [style]="{ 'background-color': '{{backGroundColor}}', color: '#2a1261' }" />
             
         </div>
     </ng-template>
 </p-menubar>
-<app-login [visible]="globalSrv.getLoginView()"/>
+<app-login [visible]="globalSrv.getLoginView()" (firstLetterChange)="firstLetterChange($event)"/>
 <app-cart></app-cart>
 
 
