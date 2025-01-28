@@ -100,3 +100,6 @@ button:hover {
 .payment-icons img:hover {
   transform: scale(1.1); 
 }
+#total{
+  text-align: center;
+}

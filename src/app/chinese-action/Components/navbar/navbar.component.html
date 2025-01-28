@@ -31,12 +31,33 @@
             [value]="globalSrv.getCartQuantity()"
             (click)="openCart()">
           </i>
+          <div
+          (click)="logOut()"
+          class="profile-circle"
+          [ngStyle]="{
+            'background-color':'#356a73' ,
+            'color': textColor,
+            'border': '2px solid ' + '#356a73',
+            'width': '40px',
+            'height': '40px',
+            'line-height': '40px',
+            'text-align': 'center',
+            'border-radius': '50%',
+            'font-size': '20px'
+          }"
+        >
+        <i 
+        class="pi pi-sign-out" 
+       
+    >
+      </i>
+        </div>
             <div
             class="profile-circle"
             [ngStyle]="{
               'background-color': backGroundColor,
               'color': textColor,
-              'border': '2px solid ' + borderColor,
+              'border': '2px solid ' + '#356a73',
               'width': '40px',
               'height': '40px',
               'line-height': '40px',

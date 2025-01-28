@@ -4,6 +4,7 @@
     style="background-image: url('http://127.0.0.1:8200/3.jpg');"
   >
     <div class="register-form">
+        <div id="anonimCircle"> <img id="anonim" src="user.jpg" alt="anonmi"></div>
       <h1>Register</h1>
       <form [formGroup]="frmRegister" (ngSubmit)="createUser()">
         <div class="form-group">
@@ -130,7 +131,7 @@
           Register
         </button>
         <p>
-          Already have an account? <a (click)="moveToLogin()">Login</a>
+          Already have an account? <a id="loginA" (click)="moveToLogin()">Login</a>
         </p>
       </form>
     </div>

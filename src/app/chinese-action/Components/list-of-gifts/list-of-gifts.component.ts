@@ -247,10 +247,9 @@ export class ListOfGiftsComponent implements OnInit {
 
       reader.onload = (e: any) => {
 
-        this.selectedImage = e.target.result; // הנתיב לתמונה בכרטיסיית תמונה
+        this.selectedImage = e.target.result; 
 
-        this.gift.imgUrl = e.target.result; // כאן אתה יכול לשמור את שם הקובץ במודל שלך
-
+        this.gift.imgUrl = e.target.result; 
       };
 
 

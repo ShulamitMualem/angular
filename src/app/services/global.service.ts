@@ -43,6 +43,7 @@ ngOnChanges() {
     this.cartQuantity.update(PrevcartQuantity => PrevcartQuantity + quantity);
   }
   resetCartQuantity() {
+    sessionStorage.removeItem("cart")
     this.cartQuantity.update(PrevcartQuantity => PrevcartQuantity - PrevcartQuantity);
   }
   getLoginView() {

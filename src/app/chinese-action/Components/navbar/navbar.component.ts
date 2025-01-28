@@ -110,6 +110,12 @@ this.setNewUser()
     })
     
   }
+  logOut(){
+    sessionStorage.removeItem("user")
+    this.globalSrv.setIsAdmin(false)
+    this.globalSrv.resetCartQuantity()
+
+  }
 
 
 }

@@ -1,6 +1,7 @@
 
 <div class="payment-container">
   <h2 class="payment-title">Payment Details</h2>
+  <h3 id="total">the total amount is: {{amount}}$</h3>
   <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
   
     <div class="form-group">

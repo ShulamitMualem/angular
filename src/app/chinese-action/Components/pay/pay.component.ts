@@ -12,6 +12,7 @@ import { GlobalService } from '../../../services/global.service';
 })
 export class PayComponent {
   paymentForm: FormGroup;
+  amount:number=0
   raffleService:RaffleService=inject(RaffleService)
   router=inject(Router)
   globalservice=inject(GlobalService)
@@ -23,6 +24,9 @@ export class PayComponent {
       expiryDate:new FormControl( '', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)]),
       cvv: new FormControl('', [Validators.required, Validators.pattern(/^\d{3}$/)])
     });
+  }
+  ngOnInit(){
+    this.paymentCalculation();
   }
 
   onSubmit() {
@@ -71,4 +75,9 @@ formatIDNumber(event: any): void {
   }
   event.target.value = input; // מציג את המספר עם עד 9 ספרות
 }
+
+  paymentCalculation(){
+    const cart = JSON.parse(sessionStorage.getItem("cart") || "[]")
+    cart.map((item:any)=>this.amount+=item.gift.price*item.quantity)
+  } 
 }

@@ -28,8 +28,9 @@
             id="email" 
             formControlName="email" [ngClass]="{'has-error':!frmDonor.controls['email'].valid && frmDonor.controls['email'].touched}" />
             <span *ngIf="frmDonor.controls['email'].errors && frmDonor.controls['email'].errors['ValueNotMatch']">please enter a valid email adress</span>
-    </div>
-    <ng-template pTemplate="footer">
+    </div >
+    <!-- <ng-template pTemplate="footer"> -->
+      <div id="footer">
         <p-button
           label="Cancel"
           icon="pi pi-times"
@@ -41,8 +42,8 @@
           icon="pi pi-check"
           [text]="true"
           (onClick)="savedonor()"
-        />
-      </ng-template>
+        /></div>
+      <!-- </ng-template> -->
     <!-- <button [disabled]="frmDonor.invalid" (click)="savedonor()">send</button> -->
 </form>
 </p-dialog>
