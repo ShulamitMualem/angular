@@ -1,0 +1,28 @@
+.pi-cart-plus {
+    color: #44828d !important; /* צבע ירוק */
+    font-size: 1.5rem; /* גודל טקסט גדול יותר */
+  }
+  
+  .pi-cart-plus:hover {
+    color: #356a73 !important; /* צבע ירוק כהה יותר במצב רחף */
+  }
+
+  p-avatar {
+    transition: all 0.3s ease-in-out;
+  }
+  .profile-circle {
+    display: inline-block;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+  }
+  .profile-circle {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+  ::ng-deep .custom-cart-badge .p-badge {
+    background-color: #4fb2b8 !important; /* צבע רקע קבוע */
+    color: #FFFFFF !important;           /* צבע טקסט קבוע */
+    font-weight: bold;                   /* מדגיש את הטקסט */
+    border-radius: 10px;                 /* שוליים עגולים */
+  }
+  
+  

@@ -3,6 +3,7 @@ import { RaffleResponse } from '../Models/raffleResponse/raffleResponse.model';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
 import { LotteryTicket } from '../Models/lotteryTicket/lotteryTicket.model';
+import { User } from '../Models/user/user.model';
 
 
 @Injectable({
@@ -16,10 +17,11 @@ export class RaffleService {
      getRaffleResponseList(): Observable<RaffleResponse[]> {
        return this.http.get<RaffleResponse[]>(`${this.apiUrl}/raffle`);
      }
-     creatLotteryTickets(id:number,cart:any):Observable<LotteryTicket[]>{
+     creatLotteryTickets(user:User,cart:any):Observable<LotteryTicket[]>{
+      debugger
       const LotteryTickets:LotteryTicket[]=[];
       cart.forEach((item:any)=>{
-        const lotteryTicket: LotteryTicket = { userId: id, giftId: item.gift.id ,id:0};
+        const lotteryTicket: LotteryTicket = { userId: user.id, giftId: item.gift.id ,id:0};
         let i=0
         while (i<item.quantity) {
            LotteryTickets.push(lotteryTicket);

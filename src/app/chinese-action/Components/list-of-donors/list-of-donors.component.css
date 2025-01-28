@@ -1,0 +1,18 @@
+#exportToExecel{
+    width: 30px;
+    height: 30px;
+    
+  }
+  .head {
+    display: flex; /* מפעיל Flexbox */
+    justify-content: center; /* ממרכז אופקית */
+    align-items: center; /* ממרכז אנכית */
+    min-height: 50px; /* קובע גובה מינימלי */
+    text-align: center; /* ממרכז את הטקסט בתוך האלמנט */
+  }
+  .column {
+    display: grid;
+    place-items: center;
+    min-height: 150px; /* קובע גובה מינימלי */
+    text-align: center;
+  }

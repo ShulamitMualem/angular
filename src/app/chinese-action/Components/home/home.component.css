@@ -1,7 +1,41 @@
-body {
-    background-image: url('/background.jpeg');
+.body {
+    background-image: url('../../../../../public/background.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh; 
+    height: 85vh; 
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    color: #fff; /* צבע טקסט לבן על רקע כהה */
+    font-family: 'Arial', sans-serif;
   }
+
+/* קונטיינר של הטיימר */
+.timer-container {
+  /* background: rgba(0, 0, 0, 0.5); רקע כהה מעט כדי להבליט את הטקסט */
+  padding: 30px 50px;
+  border-radius: 15px;
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
+  backdrop-filter: blur(2px); /* מוסיף אפקט "blur" לרקע */
+}
+
+/* טקסט של "Time Left" */
+.time-left-text {
+  font-size: 80px;
+  color: #c31d22; /* צבע סיני עז */
+  font-weight: bolder;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* הטיימר עצמו */
+.countdown-timer {
+  font-size: 120px;
+  color: #fce4af; /* צבע זהב למראה זוהר */
+  font-weight: bolder;
+  letter-spacing: 4px; /* רווחים בין הספרות */
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* הוספת הצללה למספרים */
+}

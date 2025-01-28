@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
+import { GlobalService } from '../../../services/global.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-register',
@@ -10,6 +13,8 @@ import { UserService } from '../../../services/user.service';
 export class RegisterComponent {
   frmRegister!: FormGroup;
   userService=inject(UserService)
+  globalService=inject(GlobalService)
+  route=inject(Router)
   constructor(){
   this.frmRegister = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
@@ -22,7 +27,17 @@ export class RegisterComponent {
 }
 createUser(){
   this.userService.creatUser(this.frmRegister.value).subscribe(data=>{
-    sessionStorage.setItem("user", JSON.stringify(data.id));
+
+Swal.fire({
+  title: "register succsesfuly",
+  icon: "success",
+  draggable: true
+}).then(() => {
+  this.globalService.setLoginView(true)
+});
   })
+}
+moveToLogin(){
+  this.globalService.setLoginView(true)
 }
 }

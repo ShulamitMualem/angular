@@ -117,23 +117,26 @@ export class ListOfGiftsComponent implements OnInit {
   }
   exportToExcel(): void {
    
-    this.donorService.getAll().subscribe(donors => {
-      const dataToExport = donors.map(donor => {
+    this.giftService.getAll().subscribe(gifts => {
+      const dataToExport = gifts.map(gift => {
         return {
-          'id': donor.id,
-          'first name': donor.firstName,
-          'last name': donor.lastName,
-          'email':donor.email
+          'name': gift.name,
+          'description': gift.description,
+          'imgUrl': gift.imgUrl,
+          'donorId':gift.donorId,
+          'price':gift.price,
         };
       })
       
-      const titleRow = ['list of donors']; 
+      const titleRow = ['list of gifts']; 
       const subtitleRow = ['tryel']; 
        const headers = [
         'id',
-          'first name',
-          'last name',
-          'email',
+          'name',
+          'description',
+          'imgUrl',
+          'donorId',
+          'price',
       ];
    
       // **שילוב כל הנתונים**
@@ -148,38 +151,38 @@ export class ListOfGiftsComponent implements OnInit {
           { s: { r: 1, c: 0 }, e: { r: 1, c: headers.length - 1 } }, // מיזוג לכותרת המשנה
       ];
    
-      // **עיצוב עמודות ושורות**
-      ws['!cols'] = headers.map(() => ({ wpx: 150 })); // רוחב עמודות
+   
+      ws['!cols'] = headers.map(() => ({ wpx: 150 }));
       ws['!rows'] = [
-          { hpx: 30 }, // גובה שורת כותרת כללית
-          { hpx: 20 }, // גובה שורת משנה
-          { hpx: 25 }, // גובה שורת כותרות
+          { hpx: 30 }, 
+          { hpx: 20 }, 
+          { hpx: 25 }, 
       ];
    
-      // **עיצוב מותאם אישית**
+    
       const headerStyle = {
           font: { bold: true },
-          fill: { fgColor: { rgb: 'D3D3D3' } } // אפור בהיר
+          fill: { fgColor: { rgb: 'D3D3D3' } } 
       };
       const titleStyle = {
-          font: { bold: true, sz: 16 }, // פונט גדול ומודגש
-          alignment: { horizontal: 'left' } // יישור לשמאל
+          font: { bold: true, sz: 16 },
+          alignment: { horizontal: 'left' } 
       };
       const subtitleStyle = {
-          font: { italic: true, sz: 12 }, // פונט נטוי וקטן יותר
-          alignment: { horizontal: 'left' } // יישור לשמאל
+          font: { italic: true, sz: 12 }, 
+          alignment: { horizontal: 'left' }
       };
    
-      // **החלת עיצוב על התאים**
-      ws['A1'].s = titleStyle; // עיצוב כותרת כללית
-      ws['A2'].s = subtitleStyle; // עיצוב כותרת המשנה
+ 
+      ws['A1'].s = titleStyle;
+      ws['A2'].s = subtitleStyle; 
       headers.forEach((header, index) => {
           const cellAddress = XLSX.utils.encode_cell({ r: 2, c: index });
-          ws[cellAddress].s = headerStyle; // עיצוב כותרות העמודות
+          ws[cellAddress].s = headerStyle; 
       });
    
-      XLSX.utils.book_append_sheet(wb, ws, 'donors');
-      XLSX.writeFile(wb, 'donors.xlsx');
+      XLSX.utils.book_append_sheet(wb, ws, 'gifts');
+      XLSX.writeFile(wb, 'gifts.xlsx');
    
       
       })

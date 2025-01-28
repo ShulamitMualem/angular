@@ -1,0 +1,62 @@
+.raffle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f4f8;
+  }
+  
+  .spinner {
+    padding-top: 20px;
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    border: 10px solid rgba(0, 0, 0, 0.1);
+    border-top: 10px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .raffle-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .raffle-button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+  }
+  
+  .raffle-button:active {
+    transform: scale(1);
+  }
+  
+  .loading-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+    width: 100%;
+  }
+  

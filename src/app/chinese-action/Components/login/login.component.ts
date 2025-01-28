@@ -30,6 +30,8 @@ export class LoginComponent {
 
     })
   }
+
+  
   ngOnChanges() {
 
     this.router.events
@@ -44,6 +46,8 @@ export class LoginComponent {
   onDialogHide() {
     this.frmLogin.reset()
     this.globalService.setLoginView(false);
+    this.source == '/cart' ? this.router.navigate(['/pay']) :this.source=='/register'?this.router.navigate(['/']): this.router.navigate([this.source])
+
   }
   login() {
     if (this.frmLogin.valid) {
@@ -52,7 +56,7 @@ export class LoginComponent {
           sessionStorage.setItem("user", JSON.stringify(data));
           this.firstLetterChange.emit(data.firstName.charAt(0).toUpperCase())
           this.globalService.setIsAdmin(data.role == RoleType.USER ? false : true)
-          this.source == '/cart' ? this.router.navigate(['/pay']) : this.router.navigate([this.source])
+          this.source == '/cart' ? this.router.navigate(['/pay']) :this.source=='/register'?this.router.navigate(['/']): this.router.navigate([this.source])
         },
         error: (err) => {
           console.error("Login failed:", err);

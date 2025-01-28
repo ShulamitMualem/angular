@@ -2,14 +2,14 @@
   <p-toast />
   <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
-      <p-button severity="success" label="New" icon="pi pi-plus" class="mr-2" (onClick)="openNew()" />
+      <p-button severity="success" label="New" icon="pi pi-plus" class="mr-2" (onClick)="openNew()" [style]="{'background-color': '#44828d', 'border-color': '#44828d', 'color': 'white'}"/>
       <p-button severity="danger" label="Delete" icon="pi pi-trash" (onClick)="deleteSelectedDonors()"
-        [disabled]="!selectedDonors || !selectedDonors.length" />
+        [disabled]="!selectedDonors || !selectedDonors.length" [style]="{'background-color': '#44828d', 'border-color': '#44828d', 'color': 'white'}"/>
     </ng-template>
 
     <ng-template pTemplate="right">
 
-      <p-button severity="help" label="Export" icon="pi pi-upload" (click)="exportToExcel()"/>
+      <img src="1234.png" id="exportToExecel"severity="help" label="Export" icon="pi pi-upload" (click)="exportToExcel()"/>
     </ng-template>
   </p-toolbar>
 
@@ -42,7 +42,7 @@
         <th pSortableColumn="email" style="min-width: 10rem">
           Email <p-sortIcon field="email" />
         </th>
-        <th pSortableColumn="listOfGifts" style="min-width: 10rem">
+        <th pSortableColumn="listOfGifts" style="min-width: 10rem" class="head">
           donors Gifts <p-sortIcon field="listOfGifts" />
         </th>
 
@@ -57,24 +57,25 @@
         <td>{{ donor.firstName }}</td>
         <td>{{donor.lastName}}</td>
         <td>{{ donor.email}}</td>
-        <td>
+        <td  class="column">
 @if(donor.myGiftsList.length>0){
-        <p-listbox 
-        [options]="donor.myGiftsList" 
-        optionLabel="name" 
-        [style]="{ width: '15rem' }" 
-        [listStyle]="{ 'max-height': '70px' }" 
-        [multiple]="true"
-        [metaKeySelection]="false"
-       
-  >
-      <ng-template let-item pTemplate="item">
-        <div class="flex align-items-center gap-2">
-          <img [src]="'/' +item.imgUrl" style="width: 18px" />
-          <div>{{ item.name }}</div>
-        </div>
-      </ng-template>
-    </p-listbox>}
+  <p-carousel 
+  [value]="donor.myGiftsList" 
+  [numVisible]="3" 
+  [numScroll]="1" 
+  [circular]="true" 
+  [autoplayInterval]="3000" 
+  [style]="{ 'width': '300px', 'margin': '0 auto' }"
+>
+  <ng-template pTemplate="item" let-item>
+    <div class="text-center">
+      <img [src]="'/' + item.imgUrl" style="width: 50px; height: 50px; border-radius: 4px;" />
+      <div>{{ item.name }}</div>
+    </div>
+  </ng-template>
+</p-carousel>
+
+  }
     @else{
       no gifts
     }

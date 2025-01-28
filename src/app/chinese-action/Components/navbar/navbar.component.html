@@ -25,9 +25,28 @@
     <ng-template pTemplate="end">
       
         <div class="flex align-items-center gap-3">
-            <!-- <div>{{globalSrv.getIsAdmin() | async}}</div> -->
-            <i class="pi pi-cart-plus text-3xl" pBadge value={{globalSrv.getCartQuantity()}} (click)="openCart()"></i>
-            <p-avatar label="{{firstLetter}}" shape="circle" [style]="{ 'background-color': '{{backGroundColor}}', color: '#2a1261' }" />
+            <i 
+            class="pi pi-cart-plus text-3xl custom-cart-badge" 
+            pBadge 
+            [value]="globalSrv.getCartQuantity()"
+            (click)="openCart()">
+          </i>
+            <div
+            class="profile-circle"
+            [ngStyle]="{
+              'background-color': backGroundColor,
+              'color': textColor,
+              'border': '2px solid ' + borderColor,
+              'width': '40px',
+              'height': '40px',
+              'line-height': '40px',
+              'text-align': 'center',
+              'border-radius': '50%',
+              'font-size': '20px'
+            }"
+          >
+            {{ firstLetter }}
+          </div>
             
         </div>
     </ng-template>

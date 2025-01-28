@@ -26,7 +26,9 @@ import { HomeComponent } from './Components/home/home.component';
 import { RaffleComponent } from './Components/raffle/raffle.component';
 import { RoleType } from '../Models/user/user.model';
 import { roleGuard } from './Guard/role.guard';
+import { ListboxModule } from 'primeng/listbox';
 import { CountdownPipe } from './Pipe/countdown-pipe.pipe';
+
 
 
 
@@ -50,7 +52,7 @@ import { CountdownPipe } from './Pipe/countdown-pipe.pipe';
     CountdownPipe
     ],
   imports: [ 
-    
+    ListboxModule,
     OrderListModule, 
     DataViewModule, ButtonModule, TagModule,
     CommonModule,
@@ -63,10 +65,9 @@ ReactiveFormsModule,
       {path: 'viewGift', component: ViewGiftsComponent },
       {path: 'viewGifts', component:BuyGiftsComponent },
       {path: 'register', component: RegisterComponent },
-      // {path: 'cart', component: CartComponent},
+      {path: 'cart', component: CartComponent},
       {path: 'payLogin', component: PayLoginComponent},
       {path: 'pay', component: PayComponent },
-      // {path: 'login', component: LoginComponent, data:{fromWhere:""} },
       {path:'', component:HomeComponent},
       {path: 'admin' ,canActivate: [roleGuard],
         data: { roles: [RoleType.ADMIN] },children:[

@@ -1,3 +1,38 @@
 .p-confirm-dialog {
     z-index: 9999 !important;
   }
+  #exportToExecel{
+    width: 30px;
+    height: 30px;
+  }
+  .import-button {
+    background-color: #529ba8; /* צבע רקע ירוק */
+    color: white; /* צבע טקסט */
+    border: none;
+    border-radius: 25px; /* כפתור עגול */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s; /* אפקט מעבר חלק */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צל */
+  }
+  
+  .import-button i {
+    font-size: 18px; /* גודל האייקון */
+  }
+  
+  .import-button:hover {
+    background-color: #44828d; /* צבע ירוק כהה יותר בריחוף */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* צל מוגבר בריחוף */
+  }
+  
+  .import-button:active {
+    background-color: #356a73; /* צבע ירוק כהה מאוד בלחיצה */
+    transform: scale(0.98); /* אפקט לחיצה */
+  }
+  
+

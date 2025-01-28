@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
 import { RaffleComponent } from '../raffle/raffle.component';
 import { RaffleService } from '../../../services/raffle.service';
+import { switchAll } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-gifts',
@@ -32,12 +34,15 @@ export class ViewGiftsComponent {
   }
   UpdatePermition(){
     this.raffleService.getDateOfRaffle().subscribe(date=>{
-      this.globalSrv.setIsRaffleAlowed(formatDate(date,"YYYY-MM-DD hh:mm:ss",'en_US')<formatDate(new Date(), "YYYY-MM-DD hh:mm:ss",'en_US')?false:true)
+      this.globalSrv.setIsRaffleAlowed(formatDate(date,"YYYY-MM-DD hh:mm:ss",'en_US')<formatDate(new Date(), "YYYY-MM-DD hh:mm:ss",'en_US')||this.globalSrv.getIsRaffle()?false:true)
+      console.log(this.globalSrv.getIsRaffleAlowed());
+      
 })}
   ngOnInit() {
     this.giftService.getAll().subscribe(data => {
-      this.gifts = data.slice(0, 12)
+      this.gifts = data
       console.log(data);
+      this.UpdatePermition()
 
     })
   }
@@ -48,6 +53,12 @@ export class ViewGiftsComponent {
     sessionStorage.setItem("cart", JSON.stringify(this.cart))
     this.globalSrv.setCartQuantity(1);
     console.log(this.cart);
+    Swal.fire({
+      icon: "success",
+      title: "gift added to  cart",
+      showConfirmButton: false,
+      timer: 1000
+    });
     
   }
   goToCart() {

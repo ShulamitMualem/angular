@@ -3,31 +3,28 @@
     <p-toolbar styleClass="mb-4 gap-2">
       <ng-template pTemplate="left">
         <p-button
-          severity="success"
-          label="New"
-          icon="pi pi-plus"
-          class="mr-2"
-          (onClick)="openNew()"
-        />
-        <p-button
-          severity="danger"
-          label="Delete"
-          icon="pi pi-trash"
-          (onClick)="deleteSelectedGifts()"
-          [disabled]="!selectedGifts || !selectedGifts.length"
-        />
+        severity="success"
+        label="New"
+        icon="pi pi-plus"
+        class="mr-2"
+        (onClick)="openNew()"
+        [style]="{'background-color': '#44828d', 'border-color': '#44828d', 'color': 'white'}"
+      />
+      
+      <p-button
+        severity="danger"
+        label="Delete"
+        icon="pi pi-trash"
+        [style]="{'background-color': '#44828d', 'border-color': '#44828d', 'color': 'white'}"
+        (onClick)="deleteSelectedGifts()"
+        [disabled]="!selectedGifts || !selectedGifts.length"
+      />
+      
+      
       </ng-template>
   
       <ng-template pTemplate="right">
-        <p-fileUpload
-          mode="basic"
-          accept="image/*"
-          [maxFileSize]="1000000"
-          label="Import"
-          chooseLabel="Import"
-          class="mr-2 inline-block"
-        />
-        <p-button severity="help" label="Export" icon="pi pi-upload" (click)="exportToExcel()"/>
+        <img src="1234.png" id="exportToExecel"severity="help" label="Export" icon="pi pi-upload" (click)="exportToExcel()"/>
       </ng-template>
     </p-toolbar>
   
@@ -136,7 +133,7 @@
           width="100"
           *ngIf="gift.imgUrl"
         />
-        <div>{{ gift.imgUrl}}</div>
+
         <div class="field">
           <label for="name">Name</label>
           <input
@@ -172,22 +169,27 @@
         <div class="field">
           <label for="donores">Donor Id</label>
           <p-dropdown
-            [(ngModel)]="gift.donorId"
-            inputId="donores"
-            [options]="donors"
-            optionLabel="firstName"
-            optionValue="id"
-            value="gift.donorId"
-            class="w-full"
-            
-          >
-            <ng-template let-choosenOption pTemplate="selectedItem">
-              <p-tag [value]="choosenOption.firstName"></p-tag>
-            </ng-template>
-            <ng-template let-option pTemplate="item">
-              <p-tag [value]="option.firstName"></p-tag>
-            </ng-template>
-          </p-dropdown>
+  [(ngModel)]="gift.donorId"
+  inputId="donores"
+  [options]="donors"
+  optionLabel="firstName"
+  optionValue="id"
+  class="w-full"
+>
+  <!-- תבנית הפריט שנבחר -->
+  <ng-template let-choosenOption pTemplate="selectedItem">
+    <div style="color: black;">
+      {{ choosenOption?.firstName || 'Select a Donor' }}
+    </div>
+  </ng-template>
+
+  <!-- תבנית הפריטים ברשימה -->
+  <ng-template let-option pTemplate="item">
+    <div style="color: black;">
+      {{ option.firstName }}
+    </div>
+  </ng-template>
+</p-dropdown>
         </div>
         <div class="field">
           <label for="price">Price</label>
@@ -210,9 +212,10 @@
 
           <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;" #fileInput>
           
-          <button (click)="fileInput.click()">IMPORT</button>
           
-         
+          <button (click)="fileInput.click()" class="import-button">
+            <i class="pi pi-upload"></i> Import image
+          </button>
           
           </div>
        

@@ -14,11 +14,29 @@ export class NavbarComponent implements OnInit {
   authService = inject(AuthService)
   globalSrv = inject(GlobalService)
   visible: boolean = false;
-  backGroundColor:string='#dee9fc'
   firstLetter:string="A"
+  backGroundColor: string = '#356a73'; // צבע רקע התחלתי
+  textColor: string = '#ffffff'; // צבע טקסט התחלתי
+  borderColor: string = '#529ba8'; // צבע שוליים התחלתי
 
+setNewUser(): void {
+  this.backGroundColor = this.generateRandomColor();
+  this.textColor = this.generateRandomColor();
+  this.borderColor = this.generateRandomColor(); 
+
+}
+
+  generateRandomColor(): string {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
   firstLetterChange(first:string){
     this.firstLetter=first
+this.setNewUser()
   }
   constructor(private router: Router) {
 
@@ -80,11 +98,7 @@ export class NavbarComponent implements OnInit {
 
 
           },
-          {
-            label: 'Users',
-            icon: 'pi pi-user'
-
-          }, {
+           {
             label: 'Raffle',
             icon: 'pi pi-tags',
             routerLink: '/admin/raffle',
@@ -97,7 +111,5 @@ export class NavbarComponent implements OnInit {
     
   }
 
-  navgateToCart() {
-    this.router.navigate(['/cart']);
-  }
+
 }

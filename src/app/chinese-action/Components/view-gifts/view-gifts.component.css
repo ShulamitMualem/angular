@@ -18,7 +18,32 @@
     justify-content: space-between;
   }
   
-
+  :host ::ng-deep .my-custom-button .p-button {
+    background-color: #44828d !important; /* רקע ירוק */
+    color: #ffffff !important; /* טקסט לבן */
+    border-color: #44828d !important; /* צבע מסגרת */
+  }
+  
+  :host ::ng-deep .my-custom-button .p-button:hover {
+    background-color: #356a73 !important; /* רקע ירוק כהה */
+    color: #ffffff !important; /* טקסט לבן */
+  }
+  :host ::ng-deep .p-dataview-layout-options .p-button {
+    background-color: #44828d !important;
+    color: #ffffff !important;
+    border: 1px solid #44828d !important;
+  }
+  
+  :host ::ng-deep .p-dataview-layout-options .p-button.p-highlight {
+    background-color: #356a73 !important;
+    border-color: #356a73 !important;
+    color: #ffffff !important;
+  }
+  
+  :host ::ng-deep .p-dataview-layout-options .p-button:hover {
+    background-color: #529ba8 !important;
+    border-color: #529ba8 !important;
+  }
   ::ng-deep .p-dataview-list-container .p-dataview-list-item img {
     margin-top: 1rem;
     width: 100px; 

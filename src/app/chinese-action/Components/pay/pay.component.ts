@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RaffleService } from '../../../services/raffle.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
   selector: 'app-pay',
@@ -10,6 +13,8 @@ import { RaffleService } from '../../../services/raffle.service';
 export class PayComponent {
   paymentForm: FormGroup;
   raffleService:RaffleService=inject(RaffleService)
+  router=inject(Router)
+  globalservice=inject(GlobalService)
   constructor() {
     this.paymentForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -22,13 +27,26 @@ export class PayComponent {
 
   onSubmit() {
     if (this.paymentForm.valid) {
-      console.log('Payment Details:', this?.paymentForm.value);
-      alert('Payment Successful!');
-      this.raffleService.creatLotteryTickets(JSON.parse(sessionStorage.getItem("user")||"-1"),JSON.parse(sessionStorage.getItem("cart")||"[]")).subscribe((data)=>{
-        console.log(data);
+    this.raffleService.creatLotteryTickets(JSON.parse(sessionStorage.getItem("user")||"-1"),JSON.parse(sessionStorage.getItem("cart")||"[]")).subscribe((data)=>{
+        Swal.fire({
+          icon: "success",
+          title: "Your orderd had been recived thankyou for your donatiation ",
+          showConfirmButton: false,
+          timer: 3000
+        });
+        sessionStorage.removeItem("cart")
+        this.globalservice.resetCartQuantity()
+        this.router.navigate(['/'])
         }) 
-    } else {
-      alert('Please fix the errors before submitting.');
+
+    } 
+    else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "'Please fix the errors before submitting.",
+  
+      });
     }
   }
 raffle(){

@@ -18,7 +18,7 @@
               <div class="md:w-10rem relative">
                 <img
                   class="block xl:block mx-auto border-round w-full"
-                  [src]="'/' + item.imgUrl"
+                  [src]="item.imgUrl"
                   [alt]="item.name"
                 />
               </div>
@@ -28,20 +28,19 @@
               >
                 <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
                   <div>
-                    <span class="font-medium text-secondary text-sm">{{ item.category }}</span>
                     <div class="text-lg font-medium text-900 mt-2">{{ item.name }}</div>
+                    <span class="font-medium text-secondary text-sm">{{ item.description }}</span>
+
                   </div>
                 </div>
                 <div class="flex flex-column md:align-items-end gap-5">
                   <span class="text-xl font-semibold text-900">{{ '₪' + item.price }}</span>
-                  <div class="flex flex-row-reverse md:flex-row gap-2">
-                    <p-button icon="pi pi-heart" [outlined]="true"></p-button>
-                    <p-button
+                  <div class="gap-2">
+                    <p-button  *ngIf="globalSrv.getIsRaffleAlowed()"
                       icon="pi pi-shopping-cart"
-                      class="flex-auto md:flex-initial white-space-nowrap"
+                      class="flex-auto md:flex-initial white-space-nowrap my-custom-button"
                       label="Buy Ticket"
                       (click)="addToCart(item)"
-                      *ngIf="globalSrv.getIsRaffleAlowed()"
                     ></p-button>
                   </div>
                 </div>
@@ -61,7 +60,7 @@
                 <div class="relative mx-auto">
                   <img
                     class="border-round w-full"
-                    [src]="'/' + gift.imgUrl"
+                    [src]="gift.imgUrl"
                     [alt]="gift.name"
                     style="max-width: 300px;"
                   />
@@ -75,14 +74,14 @@
                 </div>
                 <div class="flex flex-column gap-4 mt-4">
                   <span class="text-2xl font-semibold">{{ '₪' + gift.price }}</span>
-                  <div class="flex gap-2">
+                  <div class="gap-2 align-items-center">
                     <p-button
+                    *ngIf="globalSrv.getIsRaffleAlowed()"
                       icon="pi pi-shopping-cart"
-                      class="flex-auto md:flex-initial white-space-nowrap"
+                      class="flex-auto md:flex-initial white-space-nowrap my-custom-button"
                       label="Buy Ticket"
                       (click)="addToCart(gift)"
                     ></p-button>
-                    <p-button icon="pi pi-heart" [outlined]="true"></p-button>
                   </div>
                 </div>
               </div>
